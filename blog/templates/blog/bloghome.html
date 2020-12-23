@@ -1,0 +1,24 @@
+
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+<p class="alet alert-info" style="align-content: center">Saifu write {{ blogs.count }} blog{{ blogs.count | pluralize }}</p>
+
+    <div class="container ">
+    <div class="row">
+    <div class="col-md-14">
+        <div class="row">
+                {% for blog in blogs %}
+                    <div class="col-md-4">
+                    <a href="{% url 'blog:details' blog.id %}"> <h1>{{ blog.title }}</h1>
+                    <br>
+                    <h3 class="btn btn-primary">{{ blog.date | date:'M d Y' | upper}}</h3>
+                    <br>
+                    <h4 style="overflow-x: auto !important">{{ blog.desc| safe  | truncatechars:100}}</h4>
+                    </div></a>
+                {% endfor %}
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}
